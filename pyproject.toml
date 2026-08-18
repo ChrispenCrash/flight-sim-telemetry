@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "msfs-telemetry"
+version = "1.0.0"
+description = "Terminal application that streams all available telemetry from Microsoft Flight Simulator 2024 via SimConnect"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "flight-sim-telemetry" }]
+keywords = ["msfs", "flight-simulator", "simconnect", "telemetry"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3",
+    "Topic :: Games/Entertainment :: Simulation",
+]
+dependencies = [
+    "rich>=13.7.0",
+    "click>=8.1.0",
+]
+
+[project.optional-dependencies]
+simconnect = ["simconnect-H>=0.7.0"]
+
+[project.scripts]
+msfs-telemetry = "msfs_telemetry.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/flight-sim-telemetry/flight-sim-telemetry"
+Documentation = "https://docs.flightsimulator.com/msfs2024/html/6_Programming_APIs/SimConnect/SimConnect_SDK.htm"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+msfs_telemetry = ["data/*"]
